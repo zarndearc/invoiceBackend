@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers & Invoices</title>
+</head>
+<body>
+  <h1>Customer & Invoice Management</h1>
+
+  <!-- Form to Add Customer -->
+  <h2>Add Customer</h2>
+  <form id="customerForm">
+    <label>Name: <input type="text" id="name"></label><br>
+    <label>Address: <input type="text" id="address"></label><br>
+    <label>State Code: <input type="text" id="stateCode"></label><br>
+    <button type="submit">Add Customer</button>
+  </form>
+
+  <!-- Form to Add Invoice -->
+  <h2>Add Invoice</h2>
+  <form id="invoiceForm">
+    <label>Invoice No: <input type="text" id="invoiceNo"></label><br>
+    <label>GSTIN: <input type="text" id="gstin"></label><br>
+    <label>Tax Rate: <input type="number" id="taxRate"></label><br>
+    <label>Taxable Value: <input type="number" id="taxableValue"></label><br>
+    <label>CGST: <input type="number" id="cgst"></label><br>
+    <label>SGST: <input type="number" id="sgst"></label><br>
+    <label>IGST: <input type="number" id="igst"></label><br>
+    <label>Total Value: <input type="number" id="totalValue"></label><br>
+    <button type="submit">Add Invoice</button>
+  </form>
+
+  <script>
+    document.getElementById('customerForm').onsubmit = async function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const address = document.getElementById('address').value;
+      const stateCode = document.getElementById('stateCode').value;
+
+      await fetch('/customers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, address, stateCode })
+      });
+
+      alert('Customer added!');
+    };
+
+    document.getElementById('invoiceForm').onsubmit = async function(event) {
+      event.preventDefault();
+      const invoiceNo = document.getElementById('invoiceNo').value;
+      const gstin = document.getElementById('gstin').value;
+      const taxRate = document.getElementById('taxRate').value;
+      const taxableValue = document.getElementById('taxableValue').value;
+      const cgst = document.getElementById('cgst').value;
+      const sgst = document.getElementById('sgst').value;
+      const igst = document.getElementById('igst').value;
+      const totalValue = document.getElementById('totalValue').value;
+
+      await fetch('/invoices', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          invoiceNo, gstin, taxRate, taxableValue, cgst, sgst, igst, totalValue
+        })
+      });
+
+      alert('Invoice added!');
+    };
+  </script>
+</body>
+</html>
