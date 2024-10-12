@@ -233,7 +233,7 @@
   
     // Search functionality
     function searchTable() {
-      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const searchTerm = document.getElementById('searchInput').value;
       fetchCustomers(currentCustomerPage, searchTerm);
       fetchInvoices(currentInvoicePage, searchTerm);
     }
