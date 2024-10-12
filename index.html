@@ -99,10 +99,6 @@
           <input type="text" id="gstin" class="form-control" required>
         </div>
         <div class="mb-3">
-          <label for="taxRate" class="form-label">Tax Rate (%)</label>
-          <input type="number" id="taxRate" class="form-control" required>
-        </div>
-        <div class="mb-3">
           <label for="taxableValue" class="form-label">Taxable Value</label>
           <input type="number" id="taxableValue" class="form-control" required>
         </div>
@@ -269,7 +265,6 @@
       event.preventDefault();
       const invoiceNo = document.getElementById('invoiceNo').value;
       const gstin = document.getElementById('gstin').value;
-      const taxRate = document.getElementById('taxRate').value;
       const taxableValue = document.getElementById('taxableValue').value;
       const cgst = document.getElementById('cgst').value;
       const sgst = document.getElementById('sgst').value;
@@ -282,7 +277,7 @@
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          invoiceNo, gstin, taxRate, taxableValue, cgst, sgst, igst, totalValue
+          invoiceNo, gstin, taxableValue, cgst, sgst, igst, totalValue
         })
       });
   

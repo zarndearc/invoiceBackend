@@ -93,7 +93,7 @@ app.get('/invoices', async (req, res) => {
 
 // Add a new invoice
 app.post('/invoices', async (req, res) => {
-  const { invoiceNo, gstin, taxRate, taxableValue, cgst, sgst, igst, totalValue } = req.body;
+  const { invoiceNo, gstin, taxableValue, cgst, sgst, igst, totalValue } = req.body;
   try {
     const newInvoice = new Invoice({
       invoiceNo,
