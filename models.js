@@ -12,7 +12,7 @@ const invoiceSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
   invoiceNo: { type: String, required: true },
   gstin: { type: String, required: true },
-  taxRate: '18%',
+  taxRate: { type: Number, default: 18, immutable: true },
   taxableValue: { type: Number, required: true },
   cgst: { type: Number,},
   sgst: { type: Number,},
